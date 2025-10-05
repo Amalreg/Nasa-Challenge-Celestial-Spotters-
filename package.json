@@ -1,0 +1,40 @@
+{
+  "name": "iss-experience-cupola-nbl",
+  "version": "1.0.0",
+  "description": "Interactive educational website for experiencing the ISS Cupola view and NBL training",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx serve .",
+    "build": "echo 'No build process needed - static website'",
+    "test": "echo 'No tests specified'"
+  },
+  "keywords": [
+    "nasa",
+    "iss",
+    "space",
+    "education",
+    "interactive",
+    "cupola",
+    "nbl",
+    "neutral-buoyancy",
+    "astronaut",
+    "training"
+  ],
+  "author": "NASA Space Apps Challenge",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/iss-experience"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/iss-experience/issues"
+  },
+  "homepage": "https://your-username.github.io/iss-experience",
+  "devDependencies": {
+    "serve": "^14.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

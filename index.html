@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISS Experience: Cupola & NBL Training</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation -->
+        <nav class="main-nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>ISS Experience</h1>
+                    <p>International Space Station</p>
+                </div>
+                <div class="nav-buttons">
+                    <button class="nav-btn active" data-section="home">Home</button>
+                    <button class="nav-btn" data-section="cupola">Cupola View</button>
+                    <button class="nav-btn" data-section="nbl">NBL Training</button>
+                    <button class="nav-btn" data-section="benefits">Earth Benefits</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h2>Experience the International Space Station</h2>
+                    <p>Discover the unique perspectives of astronauts through the Cupola's windows and experience the weightlessness training at the Neutral Buoyancy Laboratory.</p>
+                    <div class="experience-cards">
+                        <div class="card" data-section="cupola">
+                            <div class="card-icon">🌍</div>
+                            <h3>Cupola View</h3>
+                            <p>See Earth from space through the eyes of astronauts</p>
+                        </div>
+                        <div class="card" data-section="nbl">
+                            <div class="card-icon">🏊</div>
+                            <h3>NBL Training</h3>
+                            <p>Experience underwater training for space missions</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="iss-model">
+                        <div class="cupola-window"></div>
+                        <div class="earth-glow"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cupola Section -->
+        <section id="cupola" class="section">
+            <div class="cupola-container">
+                <div class="cupola-header">
+                    <h2>The Cupola: Earth's Window</h2>
+                    <p>Experience the breathtaking view of Earth from the International Space Station's observation deck</p>
+                </div>
+                
+                <div class="cupola-simulation">
+                    <!-- Dual Video Frames Layout -->
+                    <div class="dual-video-container">
+                        <!-- NASA Video Frame -->
+                        <div class="cupola-frame nasa-frame">
+                            <div class="frame-header">
+                                <h4>NASA Earth View</h4>
+                            </div>
+                            <div class="window-frame">
+                                <div class="earth-view" id="nasaView">
+                                    <video id="nasaVideo" class="earth-video" autoplay muted loop>
+                                        <source src="https://images-assets.nasa.gov/video/SeeingHome/SeeingHome~orig.mp4" type="video/mp4">
+                                        <!-- Fallback -->
+                                        <div class="earth-surface"></div>
+                                        <div class="atmosphere"></div>
+                                        <div class="clouds"></div>
+                                        <div class="city-lights"></div>
+                                    </video>
+                                    <div class="video-overlay">
+                                        <div class="video-controls">
+                                            <button class="video-btn" id="nasaPlayPause">⏸️</button>
+                                            <button class="video-btn" id="nasaMuteToggle">🔊</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- YouTube Video Frame -->
+                        <div class="cupola-frame youtube-frame">
+                            <div class="frame-header">
+                                <h4>Space Station View</h4>
+                            </div>
+                            <div class="window-frame">
+                                <div class="earth-view" id="youtubeView">
+                                    <iframe 
+                                        id="youtubeVideo" 
+                                        class="earth-video" 
+                                        src="https://www.youtube.com/embed/fZ4aD6_YJSs?si=OeX0wMWsCt8uAy98&autoplay=1&mute=1&loop=1&playlist=fZ4aD6_YJSs&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&fs=0&cc_load_policy=0&start=0&end=0" 
+                                        title="Earth from Space - Cupola View" 
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                        allowfullscreen>
+                                    </iframe>
+                                    <!-- Fallback -->
+                                    <div class="earth-surface"></div>
+                                    <div class="atmosphere"></div>
+                                    <div class="clouds"></div>
+                                    <div class="city-lights"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cupola-info">
+                        <div class="info-panel">
+                            <h3>What You're Seeing</h3>
+                            <div class="info-content" id="cupolaInfo">
+                                <p>The Cupola is a 360-degree observation deck on the ISS, providing astronauts with an unobstructed view of Earth. From here, they can see:</p>
+                                <ul>
+                                    <li>16 sunrises and sunsets every day</li>
+                                    <li>Weather patterns forming in real-time</li>
+                                    <li>City lights at night</li>
+                                    <li>Aurora borealis and aurora australis</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="nasa-data">
+                            <h3>Live ISS Data</h3>
+                            <div class="data-display">
+                                <div class="data-item">
+                                    <span class="label">Altitude:</span>
+                                    <span class="value" id="altitude">408 km</span>
+                                </div>
+                                <div class="data-item">
+                                    <span class="label">Speed:</span>
+                                    <span class="value" id="speed">28,000 km/h</span>
+                                </div>
+                                <div class="data-item">
+                                    <span class="label">Orbit Time:</span>
+                                    <span class="value" id="orbitTime">90 minutes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NBL Section -->
+        <section id="nbl" class="section">
+            <div class="nbl-container">
+                <div class="nbl-header">
+                    <h2>🚀 NBL Astronaut Training Simulator</h2>
+                    <p>Enter your weight, adjust buoyancy, and complete your mission!</p>
+                </div>
+                
+                <div class="nbl-game-container">
+                    <div class="game-controls">
+                        <div class="weight-input">
+                            <label>Enter Your Weight (kg): </label>
+                            <input type="number" id="userWeight" value="70" min="30" max="150">
+                            <button onclick="startGame()">Start Training</button>
+                        </div>
+                        
+                        <div class="buoyancy-controls">
+                            <button onclick="addWeight()">⚖️ Add Floatie (float more)</button>
+                            <button onclick="addFloat()">🦆 Add Weight (sink more)</button>
+                            <button onclick="resetBuoyancy()">🔄 Reset Buoyancy</button>
+                        </div>
+                        
+                        <div class="game-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Buoyancy:</span>
+                                <span id="buoyancyDisplay" class="stat-value">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Score:</span>
+                                <span id="scoreDisplay" class="stat-value">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Time:</span>
+                                <span id="timeDisplay" class="stat-value">00:00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="game-area">
+                        <canvas id="gameCanvas" width="800" height="500"></canvas>
+                        <p id="status" class="game-status">Click "Start Training" to begin!</p>
+                        
+                        <!-- Mission Objectives -->
+                        <div class="mission-objectives">
+                            <h4>Mission Objectives:</h4>
+                            <div class="objective-list">
+                                <div class="objective-item">
+                                    <span class="objective-icon">🎯</span>
+                                    <span class="objective-text">Reach the repair station</span>
+                                    <span id="repairStatus" class="objective-status">❌</span>
+                                </div>
+                                <div class="objective-item">
+                                    <span class="objective-icon">💎</span>
+                                    <span class="objective-text">Collect space samples (0/3)</span>
+                                    <span id="samplesStatus" class="objective-status">❌</span>
+                                </div>
+                                <div class="objective-item">
+                                    <span class="objective-icon">🔧</span>
+                                    <span class="objective-text">Use tools (0/2)</span>
+                                    <span id="toolsStatus" class="objective-status">❌</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="game-instructions">
+                        <h3>How to Play</h3>
+                        <ul>
+                            <li>Enter your weight and click "Start Training"</li>
+                            <li>Adjust buoyancy with weights and floaties to achieve neutral buoyancy</li>
+                            <li>Use arrow keys to move when properly buoyant (buoyancy between -20 and +20)</li>
+                            <li>Collect space samples (blue circles) and use tools (yellow squares)</li>
+                            <li>Reach the red repair station to complete your mission!</li>
+                            <li>Watch your oxygen levels and avoid obstacles!</li>
+                        </ul>
+                        
+                        <div class="controls-info">
+                            <h4>Controls:</h4>
+                            <p>🔼⬇️⬅️➡️ Arrow Keys - Move astronaut</p>
+                            <p>W - Add Weight (sink more)</p>
+                            <p>F - Add Floatie (float more)</p>
+                            <p>Q - Reset Buoyancy</p>
+                            <p>R - Restart mission</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section id="benefits" class="section">
+            <div class="benefits-container">
+                <div class="benefits-header">
+                    <h2>How Space Benefits Earth</h2>
+                    <p>Discover how ISS research and technology improve life on our planet</p>
+                </div>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🏥</div>
+                        <h3>Medical Advances</h3>
+                        <p>Research in microgravity has led to breakthroughs in osteoporosis treatment, cancer research, and drug development.</p>
+                        <div class="benefit-examples">
+                            <span class="example-tag">Protein Crystallization</span>
+                            <span class="example-tag">Bone Loss Research</span>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🌱</div>
+                        <h3>Agriculture</h3>
+                        <p>Space-based monitoring helps farmers optimize crop yields and manage resources more efficiently.</p>
+                        <div class="benefit-examples">
+                            <span class="example-tag">Crop Monitoring</span>
+                            <span class="example-tag">Water Management</span>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🌍</div>
+                        <h3>Earth Observation</h3>
+                        <p>Continuous monitoring of Earth's climate, weather, and environmental changes from space.</p>
+                        <div class="benefit-examples">
+                            <span class="example-tag">Climate Change</span>
+                            <span class="example-tag">Disaster Response</span>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">💡</div>
+                        <h3>Technology Innovation</h3>
+                        <p>Space technology has led to innovations in water purification, solar panels, and materials science.</p>
+                        <div class="benefit-examples">
+                            <span class="example-tag">Water Filtration</span>
+                            <span class="example-tag">Solar Technology</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="interactive-timeline">
+                    <h3>Space Technology Timeline</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">1960s</div>
+                            <div class="timeline-content">
+                                <h4>Satellite Technology</h4>
+                                <p>First weather satellites improve forecasting</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1980s</div>
+                            <div class="timeline-content">
+                                <h4>GPS Navigation</h4>
+                                <p>Global Positioning System becomes available</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2000s</div>
+                            <div class="timeline-content">
+                                <h4>ISS Research</h4>
+                                <p>Continuous scientific research in microgravity</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">Today</div>
+                            <div class="timeline-content">
+                                <h4>Earth Monitoring</h4>
+                                <p>Real-time environmental and climate data</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
